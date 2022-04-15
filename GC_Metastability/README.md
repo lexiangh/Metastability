@@ -21,8 +21,6 @@ docker build -t exp .
 
 The output plot is ./measurement_plots.png
 
-
-
 # Example Results
-TBA
+![plot](./example_result/GC_Metastability_Example.png)
 
