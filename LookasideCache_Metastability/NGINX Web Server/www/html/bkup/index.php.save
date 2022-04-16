@@ -1,0 +1,24 @@
+<?php
+$mem_var = new Memcached();
+$mem_var->addServer("10.158.50.15", 11211);
+
+$request_type = $_GET['request_type'];
+$request_size = $_GET['request_size'];
+$arrival_time = $_GET['arrival_time'];
+$retry_policy = $_GET['retry_policy'];
+
+$zipf_index = 0;
+memcached_response = $mem_var->get($zipf_index)
+
+echo $request_type;
+echo $request_size;
+echo $arrival_time;
+echo $retry_policy;
+
+if ($response) {
+   echo $response;
+} else {
+       echo "Adding Keys (K) for Values (V), You can then grab Value (V) for your Key (K) \m/ (-_-) \m/ ";
+       $mem_var->set("Bilbo", "Here s Your (Ring) Master stored in MemCached (^_^)") or die(" Keys Couldn't be Created : Bilbo Not Found :'( ");
+}
+?>

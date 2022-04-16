@@ -1,0 +1,64 @@
+Name: mysql-apt-config/dmr-warning
+Template: mysql-apt-config/dmr-warning
+Owners: mysql-apt-config
+
+Name: mysql-apt-config/preview-component
+Template: mysql-apt-config/preview-component
+Value: 
+Owners: mysql-apt-config
+
+Name: mysql-apt-config/repo-codename
+Template: mysql-apt-config/repo-codename
+Value: bionic
+Owners: mysql-apt-config
+
+Name: mysql-apt-config/repo-distro
+Template: mysql-apt-config/repo-distro
+Value: ubuntu
+Owners: mysql-apt-config
+
+Name: mysql-apt-config/repo-url
+Template: mysql-apt-config/repo-url
+Owners: mysql-apt-config
+
+Name: mysql-apt-config/select-preview
+Template: mysql-apt-config/select-preview
+Value: Disabled
+Owners: mysql-apt-config
+
+Name: mysql-apt-config/select-product
+Template: mysql-apt-config/select-product
+Value: Ok
+Owners: mysql-apt-config
+Flags: seen
+Variables:
+ selected_preview = Disabled
+ selected_server = mysql-5.7
+ selected_tools = Enabled
+
+Name: mysql-apt-config/select-server
+Template: mysql-apt-config/select-server
+Value: mysql-5.7
+Owners: mysql-apt-config
+Flags: seen
+Variables:
+ installed_server = mysql-5.7
+ server_versions = mysql-5.7, mysql-8.0
+
+Name: mysql-apt-config/select-tools
+Template: mysql-apt-config/select-tools
+Value: Enabled
+Owners: mysql-apt-config
+
+Name: mysql-apt-config/tools-component
+Template: mysql-apt-config/tools-component
+Value: mysql-tools
+Owners: mysql-apt-config
+
+Name: mysql-apt-config/unsupported-platform
+Template: mysql-apt-config/unsupported-platform
+Value: ubuntu bionic
+Owners: mysql-apt-config
+Flags: seen
+Variables:
+ platform = ubuntu focal

@@ -1,0 +1,6 @@
+{
+    "EXP_DURATION": 30, 
+    "NUM_THREADS": 192,
+    "TRIGGER_OFFSET": 15,
+    "IS_CLOSED_LOOP_TEST": "False"
+}
