@@ -17,7 +17,7 @@ pip3 install matplotlib
 
 ```bash
 sudo docker build -t exp .
-./run 0 -1 1200 0 256m
+./run.sh 0 -1 1200 0 256m
 ./analyze.py
 ./plot.py
 ```
