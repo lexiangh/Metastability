@@ -2,13 +2,16 @@
 Metastable failures due to Garbage Collection (GC). The mechanism is load-spike -> high queue length -> high GC behavior -> slowdown to requests processing -> high queue length. Please refer to Section 5.1 in the paper for more details.
 
 ## Dependencies
-* docker
-* pip3
-* pandas
-* matplotlib
+```bash
+sudo apt-get install docker.io
+sudo apt-get install python3-pip
+pip3 install pandas
+pip3 install matplotlib
+```
 
 ## Reference system set up
-AWS EC2 m5.large, ubuntu 20.04
+* Instance type: AWS EC2 m5.large
+* OS: Ubuntu 20.04
 
 # Example Usage
 
