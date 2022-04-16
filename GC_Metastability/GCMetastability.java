@@ -132,9 +132,9 @@ public class GCMetastability{
 	
 	if (Global.trigger_dur < 0) { // load-spike trigger
 	    // setting up arrival rate pattern
-	    int rps_level_interval = 50;
+	    int rps_level_interval = 40;
 	    Global.original_arrival_rate = Global.curr_arrival_rate;
-	    Global.highest_arrival_rate = Global.original_arrival_rate + 2 * rps_level_interval;
+	    Global.highest_arrival_rate = Global.original_arrival_rate + rps_level_interval; // load-spike
 	    Global.arr_after_first_load_shedding = Global.highest_arrival_rate - rps_level_interval;
 	    Global.arr_after_second_load_shedding = Global.arr_after_first_load_shedding - rps_level_interval;
 	    Global.arr_after_thrid_load_shedding = Global.arr_after_second_load_shedding - rps_level_interval;
@@ -204,7 +204,6 @@ public class GCMetastability{
 		    System.out.println("Warm-up finished, sleeping...");
 		    Thread.sleep(Global.warmup_sleep_dur);
 		    arrival_time += Global.warmup_sleep_dur * 1e6;
-		    //Global.curr_arrival_rate = Global.original_arrival_rate;
 		    System.out.println("Start running experiment at RPS=" + Global.curr_arrival_rate);
 		    measurement_start_time = System.nanoTime();
 		} else if (Global.apply_trigger && i == Global.num_warmup_reqs + (Global.curr_arrival_rate * Global.trigger_offset)) {
