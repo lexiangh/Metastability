@@ -10,16 +10,15 @@ import numpy as np
 from datetime import datetime
 from math import sqrt 
 
-# helper functions 
-
+# helper functions  
 load= int(sys.argv[1:][0])
 trigger= int(sys.argv[1:][1])
 duration_of_test=int(sys.argv[1:][2])
 zipf_parameter=float(sys.argv[1:][3])
 num_threads=int(sys.argv[1:][4])
 sleep_period_before_trigger=int(sys.argv[1:][5])
-timeout=int(sys.argv[1:][6])
-test_type = sys.argv[1:][7]
+timeout=int(sys.argv[1:][7])
+test_type = sys.argv[1:][8]
 
 if(sys.argv[1:][6] == "False"):
     closed_loop_test= False
@@ -28,7 +27,7 @@ else:
 
 args_len = len(sys.argv[1:])
 
-if(args_len != 7):        
+if(args_len != 9):        
         print("enter valid parameters:  load, trigger, duration of test, zipf_param, num_threads, trigger_offset, closed_loop_test")
         exit()
 
@@ -101,7 +100,7 @@ os.system(generate_trace_command)
 # step 3: run the TraceReplay (using & making the process non blocking) 
 trace_file_name = "traces/trace_file_" + str(float(_lambda)) + "_" + str(float(zipf_parameter)) +".txt"
 results_directory = "results_warm_cache/" 
-result_file_name = "result_" + str(float(_lambda)) + "_" + str(float(zipf_parameter)) + "_DUR_" + str(duration_of_test) + "_TRSZ_" + str(trigger_size) + "_TMOUT_"+ timeout +".txt"
+result_file_name = "result_" + str(float(_lambda)) + "_" + str(float(zipf_parameter)) + "_DUR_" + str(duration_of_test) + "_TRSZ_" + str(trigger_size) + "_TMOUT_"+ str(timeout) +".txt"
 result_file_path = results_directory + result_file_name
 trace_replay_thread = Thread(target= run_trace_replay, args=(trace_file_name, num_threads, result_file_path,))
 trace_replay_thread.start()  
@@ -125,20 +124,19 @@ process_stats_command = "python3 collect_stats_over_time.py {} {} {} {} {}".form
 os.system(process_stats_command)
 
 os_command = f"ssh-keyscan {memcached_host}  >> $HOME/.ssh/known_hosts"
-os_command = f"ssh-keyscan {master_vm}  >> $HOME/.ssh/known_hosts"
+#os_command = f"ssh-keyscan {master_vm}  >> $HOME/.ssh/known_hosts"
 
 try:
     # Set scp and ssh data.
     connUser = 'ubuntu'
     connHost = master_vm
-    connPath = '/home/ubuntu/Cache_Experiments/Main/' + test_type + "/" + result_file_name 
-    connPrivateKey = './cache_workers.pem'
-    os_command = f"ssh-keyscan {master_vm}  >> $HOME/.ssh/known_hosts"
-    os.system(os_command)
-
+    connPath = '/home/ubuntu/Cache_Experiments/Main/' + test_type + "/" + result_file_name  
+    #os_command = f"ssh-keyscan {master_vm}  >> $HOME/.ssh/known_hosts"
+    #os.system(os_command)
     # Use scp to send file from local to host.
-    scp = subprocess.Popen(['scp', '-i', connPrivateKey, result_file_path, '{}@{}:{}'.format(connUser, connHost, connPath)])
-
+    scp_command = "sudo sshpass -p metastability scp -o StrictHostKeyChecking=no " +  result_file_path + " {}@{}:{}".format(connUser, connHost, connPath)
+    #scp = subprocess.Popen(['scp', '-i', connPrivateKey, result_file_path, '{}@{}:{}'.format(connUser, connHost, connPath)])
+    os.system(scp_command)
 except CalledProcessError:
     print('ERROR: Connection to host failed!')
 
