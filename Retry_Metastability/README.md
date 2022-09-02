@@ -11,10 +11,8 @@ For the Mongo experiment, we create 4 virtual machines in AWS.  Three replica se
  For all machines, the code files are expecting the username to be **ubuntu** for connecting.  
  
  
-## AWS Environment Access ##
-Evaluator can contact authors for access to a vm environment set up in AWS where the client and replicas are already set-up and configured to run the experiments, otherwise steps for setting up vm environment provided below. 
-
- 
+## AWS Environment Set-up ##
+Steps for setting up vm environment provided below. 
 
  
 ## Client machine
