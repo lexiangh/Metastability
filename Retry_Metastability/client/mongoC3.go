@@ -27,10 +27,10 @@ func main() {
 
    primary = flag.String("primary","127.0.0.1","Primary DB Url")
    collectionName = flag.String("collection","default","Collection name")
-   n = flag.Int("n",100,"Total requests")
+   n = flag.Int("n",100000,"Total requests")
    requestInterval = flag.Int("interval",120000,"Pause between requests in nanoseconds")   //nano seconds to microseconds divide by 1,000
    timeOut = flag.Int("timeout",3,"Timeout for requests in seconds")
-   requestResends = flag.Int("resends",3,"Number of resend attempts") //default essentially unlimited resends
+   requestResends = flag.Int("resends",100000,"Number of resend attempts") //default essentially unlimited resends
    flag.Parse()
 
    
