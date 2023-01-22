@@ -1,7 +1,9 @@
+## Contact 
+For latest update on this example, please visit: https://github.com/SalmanEstyak/Metastability , Please reach out to salman.estyak@psu.edu for any issues.
+
 ## Summary
 
 This directory contains the programs needed to cause metastability issue in the popularly used Lookaside Cache based systems. For more details on how the metastability issue is triggered, please read section 5.3 of our paper.  
-
 
 ## System Setup
 
@@ -59,6 +61,3 @@ Explanation of each parameter:
 6. sleep_period_before_trigger (This dictates the timepoint where the trigger is applied)
 7. timeout: This is the maximum time a request can run before it gets killed by the server.  
 8. test_type: We can provide any name here. 
-
-## Contact 
-Please reach out to me salman.estyak@psu.edu for any issues. For latest update on this example, please visit: https://github.com/SalmanEstyak/Metastability 
